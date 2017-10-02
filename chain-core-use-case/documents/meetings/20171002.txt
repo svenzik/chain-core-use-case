@@ -1,0 +1,18 @@
+Previous time:
+Name of thesis: Blockchain application - case study on Chain
+For next time: setup chain core, test, find whitepapers
+
+Questions:
+Did not find any free scientific whitepaper on chain core.
+Scopus
+Web of Science
+Google scholar
+IEEExplore
+ACM Digital library
+SpringerLink
+
+Possible hit - too early on date
+http://ieeexplore.ieee.org/document/6703190/
+
+Next time:
+Test all languages, start writing abstract and continue searching whitepapers

@@ -1,0 +1,558 @@
+# Issue
+
+## No good
+POST /build-transaction HTTP/1.1
+Host: localhost:1999
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: application/json
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://localhost:1999/dashboard/transactions/create
+Content-Type: application/json
+Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=
+Content-Length: 307
+Connection: keep-alive
+curl 'http://localhost:1999/build-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 307' -H 'Connection: keep-alive'
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: 6b16d88aca2135d11e82
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Thu, 28 Sep 2017 17:29:43 GMT
+Content-Length: 130
+[{"actions":[{"amount":100,"type":"issue","receiver":null,"asset_alias":"svenzik asset","reference_data":{}},{"amount":99,"type":"control_account","receiver":null,"account_alias":"svenzik account","asset_alias":"svenzik asset","reference_data":{}}],"allow_additional_actions":false,"base_transaction":null}]
+
+
+## Good
+POST /build-transaction HTTP/1.1
+Host: localhost:1999
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: application/json
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://localhost:1999/dashboard/transactions/create
+Content-Type: application/json
+Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=
+Content-Length: 308
+Connection: keep-alive
+curl 'http://localhost:1999/build-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 308' -H 'Connection: keep-alive'
+[{"actions":[{"amount":100,"type":"issue","receiver":null,"asset_alias":"svenzik asset","reference_data":{}},{"amount":100,"type":"control_account","receiver":null,"account_alias":"svenzik account","asset_alias":"svenzik asset","reference_data":{}}],"allow_additional_actions":false,"base_transaction":null}]
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: f45118eb33c1dffe3691
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Thu, 28 Sep 2017 17:30:24 GMT
+Content-Length: 555
+[{"raw_transaction":"07010cb7b6a8ccec2b97debaccec2b0001012b00089094c277b764e5712e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955664027b7d70b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1217b0a202022646566696e6974696f6e206b6579223a20227376656e7a696b220a7d012b766baa201af6cd10df6cf74d782cd877f982d4965feb43d34e5696e6793fe9257267af365151ad696c00c00001014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955664012b766baa203f1f061d2c5cdb7a6677afeb820c48435cf916d06e7b0aab773aedeb1ab3171f5151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["000100000000000000"]}],"signatures":null}]}],"local":true,"allow_additional_actions":false}]
+
+
+
+{
+  "id": "6145f7cb78856a979b36c426d89b9042c5e6619dd5766ef5735bac3318d39e76",
+  "timestamp": "2017-09-28T17:30:25.569Z",
+  "position": 0,
+  "inputs": [
+    {
+      "type": "issue",
+      "amount": 100,
+      "asset_id": "2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556",
+      "asset_alias": "svenzik asset",
+      "asset_definition": {
+        "definition key": "svenzik"
+      },
+      "asset_tags": {
+        "svenzik tag": "test"
+      },
+      "asset_is_local": "yes",
+      "issuance_program": "766baa201af6cd10df6cf74d782cd877f982d4965feb43d34e5696e6793fe9257267af365151ad696c00c0",
+      "reference_data": {},
+      "is_local": "yes"
+    }
+  ],
+  "outputs": [
+    {
+      "type": "control",
+      "purpose": "receive",
+      "id": "03d865cd8f63fd012dd32191a0d1fafd608452700f87977cfd978a6f34791b18",
+      "position": 0,
+      "amount": 100,
+      "asset_id": "2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556",
+      "asset_alias": "svenzik asset",
+      "asset_definition": {
+        "definition key": "svenzik"
+      },
+      "asset_tags": {
+        "svenzik tag": "test"
+      },
+      "asset_is_local": "yes",
+      "account_id": "acc1241GTTR00808",
+      "account_alias": "svenzik account",
+      "account_tags": {
+        "name": "svenzik"
+      },
+      "control_program": "766baa203f1f061d2c5cdb7a6677afeb820c48435cf916d06e7b0aab773aedeb1ab3171f5151ad696c00c0",
+      "reference_data": {},
+      "is_local": "yes"
+    }
+  ],
+  "block_id": "e5191aa94312f11ae760f9ea7a60a63dea3663d6caa1e2c68f352b5aee5e2ab7",
+  "block_height": 2,
+  "block_transactions_count": 1,
+  "reference_data": {},
+  "is_local": "yes"
+}
+
+# Transfer asset units
+## BAD
+POST /build-transaction HTTP/1.1
+Host: localhost:1999
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0
+Accept: application/json
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://localhost:1999/dashboard/transactions/create
+Content-Type: application/json
+Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=
+Content-Length: 352
+Connection: keep-alive
+curl 'http://localhost:1999/build-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 352' -H 'Connection: keep-alive'
+[{"actions":[{"amount":10,"type":"spend_account","receiver":null,"account_alias":"svenzik account","asset_alias":"svenzik asset","reference_data":{}},{"amount":11,"type":"control_account","receiver":null,"account_alias":"wealthy businessman","asset_alias":"svenzik asset","reference_data":{}}],"allow_additional_actions":false,"base_transaction":null}]
+
+curl 'http://localhost:1999/mockhsm/sign-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 1218' -H 'Connection: keep-alive'
+{"transactions":[{"local":true,"raw_transaction":"07010700cf91e4bced2b0001019201018f01834d595d711b79401130348906553bed445b9a2c2ef59c234dc81747a78a5f4b2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95566400012b766baa203f1f061d2c5cdb7a6677afeb820c48435cf916d06e7b0aab773aedeb1ab3171f5151ad696c00c0840eb7aa2a9935de63366bacbe9d97e978a859e93dc792a0334de60ed52f8e99027b7d010002014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95565a012b766baa20163918358d805f4dd24488b58944dd8b5c072b05ff1df94fbffef33dfb89d8e25151ad696c00c00000014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560b012b766baa20361e12a407e1a8ced3cc93a2114e1752b93ddaea2840593bb2cffce3163109be5151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["010200000000000000","0200000000000000"]}],"signatures":null}]}],"allow_additional_actions":false}],"xpubs":["2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c"]}
+
+curl 'http://localhost:1999/submit-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 1409' -H 'Connection: keep-alive'
+{"transactions":[{"local":true,"raw_transaction":"07010700cf91e4bced2b0001019201018f01834d595d711b79401130348906553bed445b9a2c2ef59c234dc81747a78a5f4b2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95566400012b766baa203f1f061d2c5cdb7a6677afeb820c48435cf916d06e7b0aab773aedeb1ab3171f5151ad696c00c0840eb7aa2a9935de63366bacbe9d97e978a859e93dc792a0334de60ed52f8e99027b7d6703004021f142197aa1958aa12728bd253b2542da333b8631496214fa3825b752e134c8929e3167d6cb3303d276338a1c15329cdcc4d75ad2ef8d9d8e08bdea355d8d00232059b91ec41d4feae3671092f3fe7e5fa8b9ced088725ce743f0feb1b923655ebdae8702014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95565a012b766baa20163918358d805f4dd24488b58944dd8b5c072b05ff1df94fbffef33dfb89d8e25151ad696c00c00000014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560b012b766baa20361e12a407e1a8ced3cc93a2114e1752b93ddaea2840593bb2cffce3163109be5151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["010200000000000000","0200000000000000"]}],"signatures":["21f142197aa1958aa12728bd253b2542da333b8631496214fa3825b752e134c8929e3167d6cb3303d276338a1c15329cdcc4d75ad2ef8d9d8e08bdea355d8d00"]}]}],"allow_additional_actions":false}]}
+
+## ERROR
+#output reserved
+curl 'http://localhost:1999/build-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 352' -H 'Connection: keep-alive'
+[{"actions":[{"amount":10,"type":"spend_account","receiver":null,"account_alias":"svenzik account","asset_alias":"svenzik asset","reference_data":{}},{"amount":10,"type":"control_account","receiver":null,"account_alias":"wealthy businessman","asset_alias":"svenzik asset","reference_data":{}}],"allow_additional_actions":false,"base_transaction":null}]
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: ff709eb7450bb25f5cb2
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 10:58:59 GMT
+Content-Length: 173
+[{"code":"CH706","message":"One or more actions had an error: see attached data","data":{"actions":[{"code":"CH761","message":"Some outputs are reserved; try again","data":{"index":0},"temporary":true}]},"temporary":true}]
+
+
+# GOOD
+curl 'http://localhost:1999/build-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 352' -H 'Connection: keep-alive'
+[{"actions":[{"amount":10,"type":"spend_account","receiver":null,"account_alias":"svenzik account","asset_alias":"svenzik asset","reference_data":{}},{"amount":10,"type":"control_account","receiver":null,"account_alias":"wealthy businessman","asset_alias":"svenzik asset","reference_data":{}}],"allow_additional_actions":false,"base_transaction":null}]
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: f1841b31fea8b8c44a5e
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:01:32 GMT
+Content-Length: 598
+[{"raw_transaction":"07010700f0f7f6bced2b0001019201018f01834d595d711b79401130348906553bed445b9a2c2ef59c234dc81747a78a5f4b2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95566400012b766baa203f1f061d2c5cdb7a6677afeb820c48435cf916d06e7b0aab773aedeb1ab3171f5151ad696c00c0840eb7aa2a9935de63366bacbe9d97e978a859e93dc792a0334de60ed52f8e99027b7d010002014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95565a012b766baa2056b7ec47bedfce33f93cf0b36764b560bdaae47fff6b87b6adb729225857c4a45151ad696c00c00000014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560a012b766baa20a9c72fb436f9867e56dadfb95672a7a0f5bcf3548233b4ca3df42dfb40c445c95151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["010200000000000000","0200000000000000"]}],"signatures":null}]}],"local":true,"allow_additional_actions":false}]
+
+
+curl 'http://localhost:1999/mockhsm/sign-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 1218' -H 'Connection: keep-alive'
+{"transactions":[{"local":true,"raw_transaction":"07010700f0f7f6bced2b0001019201018f01834d595d711b79401130348906553bed445b9a2c2ef59c234dc81747a78a5f4b2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95566400012b766baa203f1f061d2c5cdb7a6677afeb820c48435cf916d06e7b0aab773aedeb1ab3171f5151ad696c00c0840eb7aa2a9935de63366bacbe9d97e978a859e93dc792a0334de60ed52f8e99027b7d010002014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95565a012b766baa2056b7ec47bedfce33f93cf0b36764b560bdaae47fff6b87b6adb729225857c4a45151ad696c00c00000014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560a012b766baa20a9c72fb436f9867e56dadfb95672a7a0f5bcf3548233b4ca3df42dfb40c445c95151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["010200000000000000","0200000000000000"]}],"signatures":null}]}],"allow_additional_actions":false}],"xpubs":["2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c"]}
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: d08e25b809b7831e69e3
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:01:32 GMT
+Content-Length: 728
+[{"raw_transaction":"07010700f0f7f6bced2b0001019201018f01834d595d711b79401130348906553bed445b9a2c2ef59c234dc81747a78a5f4b2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95566400012b766baa203f1f061d2c5cdb7a6677afeb820c48435cf916d06e7b0aab773aedeb1ab3171f5151ad696c00c0840eb7aa2a9935de63366bacbe9d97e978a859e93dc792a0334de60ed52f8e99027b7d67030040b2d98e4f427b8ada27fef570c15f4e6914ad1d1abbc71c3120cac11815dde4e2d0c07511cf9c73554547c7d994cf12516af9e78f224331dd7f4cce3fae6b240d2320e1ff5104d47b91e7aa7cae8edfb56b936d6e4db65c818b4eb5d53394f40ee0a8ae8702014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95565a012b766baa2056b7ec47bedfce33f93cf0b36764b560bdaae47fff6b87b6adb729225857c4a45151ad696c00c00000014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560a012b766baa20a9c72fb436f9867e56dadfb95672a7a0f5bcf3548233b4ca3df42dfb40c445c95151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["010200000000000000","0200000000000000"]}],"signatures":["b2d98e4f427b8ada27fef570c15f4e6914ad1d1abbc71c3120cac11815dde4e2d0c07511cf9c73554547c7d994cf12516af9e78f224331dd7f4cce3fae6b240d"]}]}],"local":true,"allow_additional_actions":false}]
+
+
+curl 'http://localhost:1999/submit-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 1409' -H 'Connection: keep-alive'
+{"transactions":[{"local":true,"raw_transaction":"07010700f0f7f6bced2b0001019201018f01834d595d711b79401130348906553bed445b9a2c2ef59c234dc81747a78a5f4b2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95566400012b766baa203f1f061d2c5cdb7a6677afeb820c48435cf916d06e7b0aab773aedeb1ab3171f5151ad696c00c0840eb7aa2a9935de63366bacbe9d97e978a859e93dc792a0334de60ed52f8e99027b7d67030040b2d98e4f427b8ada27fef570c15f4e6914ad1d1abbc71c3120cac11815dde4e2d0c07511cf9c73554547c7d994cf12516af9e78f224331dd7f4cce3fae6b240d2320e1ff5104d47b91e7aa7cae8edfb56b936d6e4db65c818b4eb5d53394f40ee0a8ae8702014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95565a012b766baa2056b7ec47bedfce33f93cf0b36764b560bdaae47fff6b87b6adb729225857c4a45151ad696c00c00000014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560a012b766baa20a9c72fb436f9867e56dadfb95672a7a0f5bcf3548233b4ca3df42dfb40c445c95151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["010200000000000000","0200000000000000"]}],"signatures":["b2d98e4f427b8ada27fef570c15f4e6914ad1d1abbc71c3120cac11815dde4e2d0c07511cf9c73554547c7d994cf12516af9e78f224331dd7f4cce3fae6b240d"]}]}],"allow_additional_actions":false}]}
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: 02f7cb178153adb33af3
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:01:33 GMT
+Content-Length: 92
+[{"id":"9bcf949239f7e0968faa609d71cf32c16e22d59263fb2ea9cc15e318c7c3719f"}]
+
+
+curl 'http://localhost:1999/list-transactions' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/9bcf949239f7e0968faa609d71cf32c16e22d59263fb2ea9cc15e318c7c3719f' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 82' -H 'Connection: keep-alive'
+{"filter":"id='9bcf949239f7e0968faa609d71cf32c16e22d59263fb2ea9cc15e318c7c3719f'"}
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: e4692c1090349a6c0d90
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:01:33 GMT
+Content-Length: 868
+{"items":[{"id":"9bcf949239f7e0968faa609d71cf32c16e22d59263fb2ea9cc15e318c7c3719f","timestamp":"2017-10-01T11:01:33.189Z","block_id":"b8ceb9446485d84d75e18bfee932d88b038cdb68fe263cf2b1d9f78bc1d90773","block_height":3,"position":0,"block_transactions_count":1,"reference_data":{},"is_local":"yes","inputs":[{"type":"spend","asset_id":"2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556","asset_alias":"svenzik asset","asset_definition":{"definition key":"svenzik"},"asset_tags":{"svenzik tag":"test"},"asset_is_local":"yes","amount":100,"spent_output_id":"03d865cd8f63fd012dd32191a0d1fafd608452700f87977cfd978a6f34791b18","account_id":"acc1241GTTR00808","account_alias":"svenzik account","account_tags":{"name":"svenzik"},"reference_data":{},"is_local":"yes"}],"outputs":[{"type":"control","purpose":"change","id":"219817a6c1cadaf41e02f2b6170bbea78bd046049687f67fe5bd7d03381da2ac","position":0,"asset_id":"2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556","asset_alias":"svenzik asset","asset_definition":{"definition key":"svenzik"},"asset_tags":{"svenzik tag":"test"},"asset_is_local":"yes","amount":90,"account_id":"acc1241GTTR00808","account_alias":"svenzik account","account_tags":{"name":"svenzik"},"control_program":"766baa2056b7ec47bedfce33f93cf0b36764b560bdaae47fff6b87b6adb729225857c4a45151ad696c00c0","reference_data":{},"is_local":"yes"},{"type":"control","purpose":"receive","id":"1a357bb37b7a82ac2b7ac992f1c8bca52233ac165186ba3f863cd227eb8c5667","position":1,"asset_id":"2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556","asset_alias":"svenzik asset","asset_definition":{"definition key":"svenzik"},"asset_tags":{"svenzik tag":"test"},"asset_is_local":"yes","amount":10,"account_id":"acc1241HC3YG080A","account_alias":"wealthy businessman","account_tags":{"description":"too rich for own good"},"control_program":"766baa20a9c72fb436f9867e56dadfb95672a7a0f5bcf3548233b4ca3df42dfb40c445c95151ad696c00c0","reference_data":{},"is_local":"yes"}]}],"next":{"filter":"id='9bcf949239f7e0968faa609d71cf32c16e22d59263fb2ea9cc15e318c7c3719f'","page_size":0,"timeout":0,"after":"3:0-1","type":""},"last_page":true}
+
+{
+  "id": "9bcf949239f7e0968faa609d71cf32c16e22d59263fb2ea9cc15e318c7c3719f",
+  "timestamp": "2017-10-01T11:01:33.189Z",
+  "position": 0,
+  "inputs": [
+    {
+      "type": "spend",
+      "amount": 100,
+      "asset_id": "2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556",
+      "asset_alias": "svenzik asset",
+      "asset_definition": {
+        "definition key": "svenzik"
+      },
+      "asset_tags": {
+        "svenzik tag": "test"
+      },
+      "asset_is_local": "yes",
+      "spent_output_id": "03d865cd8f63fd012dd32191a0d1fafd608452700f87977cfd978a6f34791b18",
+      "account_id": "acc1241GTTR00808",
+      "account_alias": "svenzik account",
+      "account_tags": {
+        "name": "svenzik"
+      },
+      "reference_data": {},
+      "is_local": "yes"
+    }
+  ],
+  "outputs": [
+    {
+      "type": "control",
+      "purpose": "change",
+      "id": "219817a6c1cadaf41e02f2b6170bbea78bd046049687f67fe5bd7d03381da2ac",
+      "position": 0,
+      "amount": 90,
+      "asset_id": "2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556",
+      "asset_alias": "svenzik asset",
+      "asset_definition": {
+        "definition key": "svenzik"
+      },
+      "asset_tags": {
+        "svenzik tag": "test"
+      },
+      "asset_is_local": "yes",
+      "account_id": "acc1241GTTR00808",
+      "account_alias": "svenzik account",
+      "account_tags": {
+        "name": "svenzik"
+      },
+      "control_program": "766baa2056b7ec47bedfce33f93cf0b36764b560bdaae47fff6b87b6adb729225857c4a45151ad696c00c0",
+      "reference_data": {},
+      "is_local": "yes"
+    },
+    {
+      "type": "control",
+      "purpose": "receive",
+      "id": "1a357bb37b7a82ac2b7ac992f1c8bca52233ac165186ba3f863cd227eb8c5667",
+      "position": 1,
+      "amount": 10,
+      "asset_id": "2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556",
+      "asset_alias": "svenzik asset",
+      "asset_definition": {
+        "definition key": "svenzik"
+      },
+      "asset_tags": {
+        "svenzik tag": "test"
+      },
+      "asset_is_local": "yes",
+      "account_id": "acc1241HC3YG080A",
+      "account_alias": "wealthy businessman",
+      "account_tags": {
+        "description": "too rich for own good"
+      },
+      "control_program": "766baa20a9c72fb436f9867e56dadfb95672a7a0f5bcf3548233b4ca3df42dfb40c445c95151ad696c00c0",
+      "reference_data": {},
+      "is_local": "yes"
+    }
+  ],
+  "block_id": "b8ceb9446485d84d75e18bfee932d88b038cdb68fe263cf2b1d9f78bc1d90773",
+  "block_height": 3,
+  "block_transactions_count": 1,
+  "reference_data": {},
+  "is_local": "yes"
+}
+
+# Retire
+## Bad
+curl 'http://localhost:1999/build-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 307' -H 'Connection: keep-alive'
+[{"actions":[{"amount":5,"type":"spend_account","receiver":null,"account_alias":"wealthy businessman","asset_alias":"svenzik asset","reference_data":{}},{"amount":4,"type":"retire","receiver":null,"asset_alias":"svenzik asset","reference_data":{}}],"allow_additional_actions":false,"base_transaction":null}]
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: eca70a88ca4c16782f6f
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:08:12 GMT
+Content-Length: 130
+[{"code":"CH705","message":"Unsafe transaction: leaves assets to be taken without requiring payment","temporary":false}]
+
+## GOOD
+curl 'http://localhost:1999/build-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 307' -H 'Connection: keep-alive'
+[{"actions":[{"amount":5,"type":"spend_account","receiver":null,"account_alias":"wealthy businessman","asset_alias":"svenzik asset","reference_data":{}},{"amount":5,"type":"retire","receiver":null,"asset_alias":"svenzik asset","reference_data":{}}],"allow_additional_actions":false,"base_transaction":null}]
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: 2ad81932c1d2d9c1ac75
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:09:13 GMT
+Content-Length: 558
+[{"raw_transaction":"07010700b08e93bded2b0001019201018f01dfe690ff30e955a202ec8afe9e7e1083f5dea062cbac2cd5729d5a8b506a45c72e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560a01012b766baa20a9c72fb436f9867e56dadfb95672a7a0f5bcf3548233b4ca3df42dfb40c445c95151ad696c00c0840eb7aa2a9935de63366bacbe9d97e978a859e93dc792a0334de60ed52f8e99027b7d010002014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955605012b766baa209bc8f144e5458f03a24dc8d3c5646669e940a2d0670197580342a3477bfbb45b5151ad696c00c0000001242e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560501016a027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"1752da88f09bf2f8af50a28c4b320b757879438eb0ada2b7336e9bf20b6778745d8965ffcb3317a43105a5049b7e4b6744fc3db1af7b1a604440bba1e8486764","derivation_path":["010300000000000000","0800000000000000"]}],"signatures":null}]}],"local":true,"allow_additional_actions":false}]
+
+curl 'http://localhost:1999/info' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 2' -H 'Connection: keep-alive'
+{}
+
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: 1d1c56b19745cc83cce6
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:09:14 GMT
+Content-Length: 394
+{"block_height":3,"blockchain_id":"b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1","build_commit":"2778c2578286caa05f1a9337394b4cb18e22642a","build_config":{"is_localhost_auth":true,"is_mockhsm":true,"is_reset":true,"is_http_ok":true},"build_date":"1497559486","configured_at":"2017-09-28T17:18:10.098Z","core_id":"009c75bf6e971a031384","crosscore_rpc_version":3,"generator_access_token":"","generator_block_height":3,"generator_block_height_fetched_at":"2017-10-01T11:09:14.369694847Z","generator_url":"","health":{"errors":{}},"is_configured":true,"is_generator":true,"is_signer":true,"network_rpc_version":3,"state":"leading","version":"1.2.1"}
+
+curl 'http://localhost:1999/mockhsm/sign-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 1134' -H 'Connection: keep-alive'
+{"transactions":[{"local":true,"raw_transaction":"07010700b08e93bded2b0001019201018f01dfe690ff30e955a202ec8afe9e7e1083f5dea062cbac2cd5729d5a8b506a45c72e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560a01012b766baa20a9c72fb436f9867e56dadfb95672a7a0f5bcf3548233b4ca3df42dfb40c445c95151ad696c00c0840eb7aa2a9935de63366bacbe9d97e978a859e93dc792a0334de60ed52f8e99027b7d010002014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955605012b766baa209bc8f144e5458f03a24dc8d3c5646669e940a2d0670197580342a3477bfbb45b5151ad696c00c0000001242e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560501016a027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"1752da88f09bf2f8af50a28c4b320b757879438eb0ada2b7336e9bf20b6778745d8965ffcb3317a43105a5049b7e4b6744fc3db1af7b1a604440bba1e8486764","derivation_path":["010300000000000000","0800000000000000"]}],"signatures":null}]}],"allow_additional_actions":false}],"xpubs":["1752da88f09bf2f8af50a28c4b320b757879438eb0ada2b7336e9bf20b6778745d8965ffcb3317a43105a5049b7e4b6744fc3db1af7b1a604440bba1e8486764"]}
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: e61a76e3a328196afc6a
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:09:14 GMT
+Content-Length: 676
+[{"raw_transaction":"07010700b08e93bded2b0001019201018f01dfe690ff30e955a202ec8afe9e7e1083f5dea062cbac2cd5729d5a8b506a45c72e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560a01012b766baa20a9c72fb436f9867e56dadfb95672a7a0f5bcf3548233b4ca3df42dfb40c445c95151ad696c00c0840eb7aa2a9935de63366bacbe9d97e978a859e93dc792a0334de60ed52f8e99027b7d67030040d38684a7a08ca26acb14f54c38c6435ec381bd3f4878961ba75c750476388286a8e0f6482f2c9767644380842d50ea7fe3dd743b06fca6caf1250467c31046022320dfb34648e84ac3f27996d98b79192268bb37377f58b3e6401c385666bdf947abae8702014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955605012b766baa209bc8f144e5458f03a24dc8d3c5646669e940a2d0670197580342a3477bfbb45b5151ad696c00c0000001242e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560501016a027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"1752da88f09bf2f8af50a28c4b320b757879438eb0ada2b7336e9bf20b6778745d8965ffcb3317a43105a5049b7e4b6744fc3db1af7b1a604440bba1e8486764","derivation_path":["010300000000000000","0800000000000000"]}],"signatures":["d38684a7a08ca26acb14f54c38c6435ec381bd3f4878961ba75c750476388286a8e0f6482f2c9767644380842d50ea7fe3dd743b06fca6caf1250467c3104602"]}]}],"local":true,"allow_additional_actions":false}]
+
+
+curl 'http://localhost:1999/submit-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 1325' -H 'Connection: keep-alive'
+{"transactions":[{"local":true,"raw_transaction":"07010700b08e93bded2b0001019201018f01dfe690ff30e955a202ec8afe9e7e1083f5dea062cbac2cd5729d5a8b506a45c72e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560a01012b766baa20a9c72fb436f9867e56dadfb95672a7a0f5bcf3548233b4ca3df42dfb40c445c95151ad696c00c0840eb7aa2a9935de63366bacbe9d97e978a859e93dc792a0334de60ed52f8e99027b7d67030040d38684a7a08ca26acb14f54c38c6435ec381bd3f4878961ba75c750476388286a8e0f6482f2c9767644380842d50ea7fe3dd743b06fca6caf1250467c31046022320dfb34648e84ac3f27996d98b79192268bb37377f58b3e6401c385666bdf947abae8702014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955605012b766baa209bc8f144e5458f03a24dc8d3c5646669e940a2d0670197580342a3477bfbb45b5151ad696c00c0000001242e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95560501016a027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"1752da88f09bf2f8af50a28c4b320b757879438eb0ada2b7336e9bf20b6778745d8965ffcb3317a43105a5049b7e4b6744fc3db1af7b1a604440bba1e8486764","derivation_path":["010300000000000000","0800000000000000"]}],"signatures":["d38684a7a08ca26acb14f54c38c6435ec381bd3f4878961ba75c750476388286a8e0f6482f2c9767644380842d50ea7fe3dd743b06fca6caf1250467c3104602"]}]}],"allow_additional_actions":false}]}
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: 958a02580dd25210b2b2
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:09:15 GMT
+Content-Length: 92
+[{"id":"248595ce26c676789b7c9c5ca16283fbe41f700ade0b5d5ea2514f3d8af641e0"}]
+
+
+curl 'http://localhost:1999/list-transactions' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/248595ce26c676789b7c9c5ca16283fbe41f700ade0b5d5ea2514f3d8af641e0' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 82' -H 'Connection: keep-alive'
+{"filter":"id='248595ce26c676789b7c9c5ca16283fbe41f700ade0b5d5ea2514f3d8af641e0'"}
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: 4704de46ec08450ba9eb
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:09:15 GMT
+Content-Length: 794
+{"items":[{"id":"248595ce26c676789b7c9c5ca16283fbe41f700ade0b5d5ea2514f3d8af641e0","timestamp":"2017-10-01T11:09:15.189Z","block_id":"ead9e3959b37a73390689217e27433ddf7fbb4624be816b21aa8da4d4018ef1b","block_height":4,"position":0,"block_transactions_count":1,"reference_data":{},"is_local":"yes","inputs":[{"type":"spend","asset_id":"2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556","asset_alias":"svenzik asset","asset_definition":{"definition key":"svenzik"},"asset_tags":{"svenzik tag":"test"},"asset_is_local":"yes","amount":10,"spent_output_id":"1a357bb37b7a82ac2b7ac992f1c8bca52233ac165186ba3f863cd227eb8c5667","account_id":"acc1241HC3YG080A","account_alias":"wealthy businessman","account_tags":{"description":"too rich for own good"},"reference_data":{},"is_local":"yes"}],"outputs":[{"type":"control","purpose":"change","id":"722e1d4603d48771a23b5b9591646b924c7d86b22f5e7201be29de4974457ccb","position":0,"asset_id":"2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556","asset_alias":"svenzik asset","asset_definition":{"definition key":"svenzik"},"asset_tags":{"svenzik tag":"test"},"asset_is_local":"yes","amount":5,"account_id":"acc1241HC3YG080A","account_alias":"wealthy businessman","account_tags":{"description":"too rich for own good"},"control_program":"766baa209bc8f144e5458f03a24dc8d3c5646669e940a2d0670197580342a3477bfbb45b5151ad696c00c0","reference_data":{},"is_local":"yes"},{"type":"retire","id":"be4de87d2275e985353a03dae094cd88f54747b5f382c175afbe69901147649b","position":1,"asset_id":"2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556","asset_alias":"svenzik asset","asset_definition":{"definition key":"svenzik"},"asset_tags":{"svenzik tag":"test"},"asset_is_local":"yes","amount":5,"control_program":"6a","reference_data":{},"is_local":"no"}]}],"next":{"filter":"id='248595ce26c676789b7c9c5ca16283fbe41f700ade0b5d5ea2514f3d8af641e0'","page_size":0,"timeout":0,"after":"4:0-1","type":""},"last_page":true}
+
+{
+  "id": "248595ce26c676789b7c9c5ca16283fbe41f700ade0b5d5ea2514f3d8af641e0",
+  "timestamp": "2017-10-01T11:09:15.189Z",
+  "position": 0,
+  "inputs": [
+    {
+      "type": "spend",
+      "amount": 10,
+      "asset_id": "2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556",
+      "asset_alias": "svenzik asset",
+      "asset_definition": {
+        "definition key": "svenzik"
+      },
+      "asset_tags": {
+        "svenzik tag": "test"
+      },
+      "asset_is_local": "yes",
+      "spent_output_id": "1a357bb37b7a82ac2b7ac992f1c8bca52233ac165186ba3f863cd227eb8c5667",
+      "account_id": "acc1241HC3YG080A",
+      "account_alias": "wealthy businessman",
+      "account_tags": {
+        "description": "too rich for own good"
+      },
+      "reference_data": {},
+      "is_local": "yes"
+    }
+  ],
+  "outputs": [
+    {
+      "type": "control",
+      "purpose": "change",
+      "id": "722e1d4603d48771a23b5b9591646b924c7d86b22f5e7201be29de4974457ccb",
+      "position": 0,
+      "amount": 5,
+      "asset_id": "2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556",
+      "asset_alias": "svenzik asset",
+      "asset_definition": {
+        "definition key": "svenzik"
+      },
+      "asset_tags": {
+        "svenzik tag": "test"
+      },
+      "asset_is_local": "yes",
+      "account_id": "acc1241HC3YG080A",
+      "account_alias": "wealthy businessman",
+      "account_tags": {
+        "description": "too rich for own good"
+      },
+      "control_program": "766baa209bc8f144e5458f03a24dc8d3c5646669e940a2d0670197580342a3477bfbb45b5151ad696c00c0",
+      "reference_data": {},
+      "is_local": "yes"
+    },
+    {
+      "type": "retire",
+      "id": "be4de87d2275e985353a03dae094cd88f54747b5f382c175afbe69901147649b",
+      "position": 1,
+      "amount": 5,
+      "asset_id": "2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556",
+      "asset_alias": "svenzik asset",
+      "asset_definition": {
+        "definition key": "svenzik"
+      },
+      "asset_tags": {
+        "svenzik tag": "test"
+      },
+      "asset_is_local": "yes",
+      "control_program": "6a",
+      "reference_data": {},
+      "is_local": "no"
+    }
+  ],
+  "block_id": "ead9e3959b37a73390689217e27433ddf7fbb4624be816b21aa8da4d4018ef1b",
+  "block_height": 4,
+  "block_transactions_count": 1,
+  "reference_data": {},
+  "is_local": "yes"
+}
+
+# Tranaction to multiple accounts
+curl 'http://localhost:1999/build-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 482' -H 'Connection: keep-alive'
+[{"actions":[{"amount":10,"type":"spend_account","receiver":null,"account_alias":"svenzik account","asset_alias":"svenzik asset","reference_data":{}},{"amount":4,"type":"control_account","receiver":null,"account_alias":"wealthy businessman","asset_alias":"svenzik asset","reference_data":{}},{"amount":6,"type":"control_account","receiver":null,"account_alias":"accoun2t","asset_alias":"svenzik asset","reference_data":{}}],"allow_additional_actions":false,"base_transaction":null}]
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: 2dc42d87b011bd28e68f
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:22:14 GMT
+Content-Length: 672
+[{"raw_transaction":"0701070089dec2bded2b0001019201018f01dfe690ff30e955a202ec8afe9e7e1083f5dea062cbac2cd5729d5a8b506a45c72e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95565a00012b766baa2056b7ec47bedfce33f93cf0b36764b560bdaae47fff6b87b6adb729225857c4a45151ad696c00c0a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a027b7d010003014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955650012b766baa205d85fc50b6cc2a436071d3d523d03d01e7d5a58cc6480351d640f70b90c379ec5151ad696c00c00000014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955604012b766baa205e127999c828db308dc3edfdeff6e7e7ad61ab9ffed3bee60cdbaa25bbc388395151ad696c00c0027b7d00014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955606012b766baa200df0c9addddd2cf76923db8ef86e5554631d52ba3a289d1229999681fc57e5fe5151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["010200000000000000","0700000000000000"]}],"signatures":null}]}],"local":true,"allow_additional_actions":false}]
+
+curl 'http://localhost:1999/mockhsm/sign-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 1386' -H 'Connection: keep-alive'
+{"transactions":[{"local":true,"raw_transaction":"0701070089dec2bded2b0001019201018f01dfe690ff30e955a202ec8afe9e7e1083f5dea062cbac2cd5729d5a8b506a45c72e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95565a00012b766baa2056b7ec47bedfce33f93cf0b36764b560bdaae47fff6b87b6adb729225857c4a45151ad696c00c0a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a027b7d010003014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955650012b766baa205d85fc50b6cc2a436071d3d523d03d01e7d5a58cc6480351d640f70b90c379ec5151ad696c00c00000014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955604012b766baa205e127999c828db308dc3edfdeff6e7e7ad61ab9ffed3bee60cdbaa25bbc388395151ad696c00c0027b7d00014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955606012b766baa200df0c9addddd2cf76923db8ef86e5554631d52ba3a289d1229999681fc57e5fe5151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["010200000000000000","0700000000000000"]}],"signatures":null}]}],"allow_additional_actions":false}],"xpubs":["2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c"]}
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: af69a9b52cc413e63913
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:22:14 GMT
+Content-Length: 823
+[{"raw_transaction":"0701070089dec2bded2b0001019201018f01dfe690ff30e955a202ec8afe9e7e1083f5dea062cbac2cd5729d5a8b506a45c72e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95565a00012b766baa2056b7ec47bedfce33f93cf0b36764b560bdaae47fff6b87b6adb729225857c4a45151ad696c00c0a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a027b7d67030040a8fe777c87d8b30c5c418f579eea1b95dd0c3c8009d0329b6b3a1ab3857e237d98b60fdb3ae412e683576ab01b8c8312a05554abba359726bd02f4703c1cee0f2320f9dda19ff12ed5566607343404bb3a4177769aaf58799b25711632cfe940f30dae8703014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955650012b766baa205d85fc50b6cc2a436071d3d523d03d01e7d5a58cc6480351d640f70b90c379ec5151ad696c00c00000014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955604012b766baa205e127999c828db308dc3edfdeff6e7e7ad61ab9ffed3bee60cdbaa25bbc388395151ad696c00c0027b7d00014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955606012b766baa200df0c9addddd2cf76923db8ef86e5554631d52ba3a289d1229999681fc57e5fe5151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["010200000000000000","0700000000000000"]}],"signatures":["a8fe777c87d8b30c5c418f579eea1b95dd0c3c8009d0329b6b3a1ab3857e237d98b60fdb3ae412e683576ab01b8c8312a05554abba359726bd02f4703c1cee0f"]}]}],"local":true,"allow_additional_actions":false}]
+
+curl 'http://localhost:1999/submit-transaction' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/create' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 1577' -H 'Connection: keep-alive'
+{"transactions":[{"local":true,"raw_transaction":"0701070089dec2bded2b0001019201018f01dfe690ff30e955a202ec8afe9e7e1083f5dea062cbac2cd5729d5a8b506a45c72e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c95565a00012b766baa2056b7ec47bedfce33f93cf0b36764b560bdaae47fff6b87b6adb729225857c4a45151ad696c00c0a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a027b7d67030040a8fe777c87d8b30c5c418f579eea1b95dd0c3c8009d0329b6b3a1ab3857e237d98b60fdb3ae412e683576ab01b8c8312a05554abba359726bd02f4703c1cee0f2320f9dda19ff12ed5566607343404bb3a4177769aaf58799b25711632cfe940f30dae8703014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955650012b766baa205d85fc50b6cc2a436071d3d523d03d01e7d5a58cc6480351d640f70b90c379ec5151ad696c00c00000014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955604012b766baa205e127999c828db308dc3edfdeff6e7e7ad61ab9ffed3bee60cdbaa25bbc388395151ad696c00c0027b7d00014e2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c955606012b766baa200df0c9addddd2cf76923db8ef86e5554631d52ba3a289d1229999681fc57e5fe5151ad696c00c0027b7d0000","signing_instructions":[{"position":0,"witness_components":[{"type":"signature","quorum":1,"keys":[{"xpub":"2c26ed76c037d95145d3d62fe95e53c0104f4c59a1853655833f876ef6520ee65085b412ee652b50e240df5070a18319ccb7d00a16b4628a510cff6cfc054b8c","derivation_path":["010200000000000000","0700000000000000"]}],"signatures":["a8fe777c87d8b30c5c418f579eea1b95dd0c3c8009d0329b6b3a1ab3857e237d98b60fdb3ae412e683576ab01b8c8312a05554abba359726bd02f4703c1cee0f"]}]}],"allow_additional_actions":false}]}
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: 7413a5edf7e20a1df2a2
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:22:15 GMT
+Content-Length: 92
+[{"id":"90e84bd112618f00ceed9e54ac507ed336c658666f8b8c7cebea4d007943c207"}]
+
+
+curl 'http://localhost:1999/list-transactions' -H 'Host: localhost:1999' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0' -H 'Accept: application/json' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost:1999/dashboard/transactions/90e84bd112618f00ceed9e54ac507ed336c658666f8b8c7cebea4d007943c207' -H 'Content-Type: application/json' -H 'Authorization: Basic Y2xpZW50OmE0N2ZlMjAyNWI0M2ZkZGVmOThjYjlmODJlMmQ0NjRhODNlYzQyNzdhMThjOTcxMmRiNzQ5ODNhYjE0YWExYmU=' -H 'Content-Length: 82' -H 'Connection: keep-alive'
+{"filter":"id='90e84bd112618f00ceed9e54ac507ed336c658666f8b8c7cebea4d007943c207'"}
+
+HTTP/1.1 200 OK
+Blockchain-Id: b807f0ec93b15a4467f97b083dadb561a7732c2c97361ecf3e81e86b106fdee1
+Chain-Request-Id: ea24c3c37cd9e8e9d4f4
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+x-xss-protection: 1
+Date: Sun, 01 Oct 2017 11:22:15 GMT
+Content-Length: 986
+{"items":[{"id":"90e84bd112618f00ceed9e54ac507ed336c658666f8b8c7cebea4d007943c207","timestamp":"2017-10-01T11:22:15.189Z","block_id":"df9780a2c4a4413dc18c184d0e71840a8a9d16f6ca48a30a29eec198fb4f67ac","block_height":6,"position":0,"block_transactions_count":1,"reference_data":{},"is_local":"yes","inputs":[{"type":"spend","asset_id":"2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556","asset_alias":"svenzik asset","asset_definition":{"definition key":"svenzik"},"asset_tags":{"svenzik tag":"test"},"asset_is_local":"yes","amount":90,"spent_output_id":"219817a6c1cadaf41e02f2b6170bbea78bd046049687f67fe5bd7d03381da2ac","account_id":"acc1241GTTR00808","account_alias":"svenzik account","account_tags":{"name":"svenzik"},"reference_data":{},"is_local":"yes"}],"outputs":[{"type":"control","purpose":"change","id":"3ba771568dd55a2ed466ee547ed17d8ff18701065578d140a495030116636424","position":0,"asset_id":"2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556","asset_alias":"svenzik asset","asset_definition":{"definition key":"svenzik"},"asset_tags":{"svenzik tag":"test"},"asset_is_local":"yes","amount":80,"account_id":"acc1241GTTR00808","account_alias":"svenzik account","account_tags":{"name":"svenzik"},"control_program":"766baa205d85fc50b6cc2a436071d3d523d03d01e7d5a58cc6480351d640f70b90c379ec5151ad696c00c0","reference_data":{},"is_local":"yes"},{"type":"control","purpose":"receive","id":"6b92464a787549a68b24fd34fef537b5cc489cb5fcf92411eb02cf9232a840be","position":1,"asset_id":"2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556","asset_alias":"svenzik asset","asset_definition":{"definition key":"svenzik"},"asset_tags":{"svenzik tag":"test"},"asset_is_local":"yes","amount":4,"account_id":"acc1241HC3YG080A","account_alias":"wealthy businessman","account_tags":{"description":"too rich for own good"},"control_program":"766baa205e127999c828db308dc3edfdeff6e7e7ad61ab9ffed3bee60cdbaa25bbc388395151ad696c00c0","reference_data":{},"is_local":"yes"},{"type":"control","purpose":"receive","id":"f9197a15fe0c6c57b4699aa832a4f92270d0278cbd867bc83f30d872deccfe65","position":2,"asset_id":"2e81b5682a5af019293ed3bc5efc85a5edd53b013044545899630a19b78c9556","asset_alias":"svenzik asset","asset_definition":{"definition key":"svenzik"},"asset_tags":{"svenzik tag":"test"},"asset_is_local":"yes","amount":6,"account_id":"acc127JK7NWG080M","account_alias":"accoun2t","account_tags":{},"control_program":"766baa200df0c9addddd2cf76923db8ef86e5554631d52ba3a289d1229999681fc57e5fe5151ad696c00c0","reference_data":{},"is_local":"yes"}]}],"next":{"filter":"id='90e84bd112618f00ceed9e54ac507ed336c658666f8b8c7cebea4d007943c207'","page_size":0,"timeout":0,"after":"6:0-1","type":""},"last_page":true}
+
+
+
+IVM
+

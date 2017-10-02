@@ -1,0 +1,2 @@
+Name of thesis: Blockchain application - case study on Chain
+For next time: setup chain core, test, find whitepapers
