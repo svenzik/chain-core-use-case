@@ -1,0 +1,23 @@
+Attending:
+Sven Mitt
+Luciano Garcia Banuelos
+Fredrik Milani 
+
+Result:
+
+
+Enabling mutliple chain cores to work together.
+
+Trying chain as big player in blockchain
+
+One blockchain per US state or country. Otherwise not scalable.
+Try chain core testnet, test if two chains can interact, can you join other chain, can you share chains. Otherwise it is not distributed.
+Write abstract!!!
+
+Send models so both can take a look at them
+
+Ivy allows comtting from one chain to other.
+Basically you retire token from one chain core and then add it to other (referencing the hash from the first chain core will make them tied together).
+
+Next time:
+Update BPMN to use Parking spot provider, Parking spot user, App

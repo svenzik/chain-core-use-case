@@ -1,5 +1,12 @@
+Attending:
+Sven Mitt
+Luciano Garcia Banuelos
+Fredrik Milani 
+
 Previous time:
 Name of thesis: Blockchain application - case study on Chain
+Fredrik Milani
+Luciano García-Bañuelos
 For next time: setup chain core, test, find whitepapers
 
 Questions:
@@ -11,8 +18,68 @@ IEEExplore
 ACM Digital library
 SpringerLink
 
-Possible hit - too early on date
+Possible hit - too early on date, just similar title
 http://ieeexplore.ieee.org/document/6703190/
 
 Next time:
 Test all languages, start writing abstract and continue searching whitepapers
+Need to start writing abstact
+
+Parkingspace is asset/token
+Two transactions - one to take, one to release and to pay
+Block the asset, guarantee that client arrives.
+
+Booking usecases:
+
+* prepaid
+* every hour paid
+* in the end, have maximum limit like 8h
+
+Example:
+3-4 o'clock 
+3-4 o'clock, wants one more hour
+3-4 o'clock, forgets to end
+
+Create a model to pay, before and when you leave
+Notify half hour before your time finishes
+cCreate a loop, 1/2 hours before it ends a notification to user, that it will be available to others
+
+Addtion to current busines models:
+Blockchain enables token based/parking space numbered .What parking is 
+Is token attached to physical spot or virtual?
+
+Resolve problem:
+What to do when parked wrongly.
+
+Document the business model, what is contract, BPMN and translate it into IVY.
+BPM model first, then notation.
+
+Model it signavio and execute it. Compare it to ivy.
+
+Blockchain as software connector
+Step by step to createing safe controct
+Search smart contracts
+
+Related work is other related work that simlar in usecases?
+Has these is done before, in what context.
+it must be opensource relate work.
+
+whitepaber on blockchain solutions.
+
+implementing a electroing management system??? 
+
+these must show it is not replication of something else...
+releated work is material for the background!!! smart contract, deseinging smart ivy, IVY. Blockchain best practices.!!!!
+releated work is material for the background!!! smart contract, deseinging smart ivy, IVY. Blockchain best practices.!!!!
+
+
+https://utlib.ut.ee/en/databases?title=I
+
+Change the gw in signavio
+
+NEXT TIME:
+Event gw - "timeout", Cancelation, Ok - find a smart contract for that
+Check if we can execute all screnarios using smart contracts?
+
+Postpay vs prepaid. Catch and release. Shoud we reserve or let him. Compare
+Simplify BPM to allow both types.

@@ -1,0 +1,67 @@
+Attending:
+Sven Mitt
+Luciano Garcia Banuelos
+Fredrik Milani 
+
+Prevous 
+Result:
+//account_alias='Sven'
+//asset_alias='EUR'
+
+//sven: inputs(account_alias='Sven') OR outputs(account_alias='Sven')
+//selver: inputs(account_alias='Selver') OR outputs(account_alias='Selver')
+
+//"type": "parking-spot"
+//inputs(account_tags.type='parking-spot') OR outputs(account_tags.type='parking-spot')
+//inputs(asset_tags.type='parking-spot') OR outputs(asset_tags.type='parking-spot')
+
+create contract at the start of parking
+add multisignature at the end of parking and pay, release parking spot
+preset values for contract???
+
+
+https://dashboard.seq.com/docs/example-ride-sharing#ride-payment
+
+//buy for N minutes
+contract ParkingContract(assetRequested: Asset, //EUR
+                    amountRequested: Amount,    //predetermined per period (let say 450 cents for 45 min)
+                    amountCollateral: Amount,   //Colleteral in case of cancel
+                    parkingspotOwner: Program,  //Selver
+                    cancelKey: PublicKey        //Buyer public key for canceling
+                    ) locks parkingSpot {
+                    
+  clause payForParking() requires payment: amountRequested of assetRequested {
+    lock payment with parkingspotOwner    //pay seller
+    lock parkingSpot with parkingspotOwner//give back to seller
+  }
+  clause cancel(buyerSig: Signature) requires payment: amountCollateral of assetRequested {
+    //verify amountCollateral > amountRequested
+    verify checkTxSig(cancelKey, buyerSig) //check it is the buyer (owner of cancelKey)
+    lock payment with parkingspotOwner
+    lock parkingSpot with parkingspotOwner//give back to seller
+  }
+}
+
+
+contract ParkingReserveContract(assetRequested: Asset, //EUR
+                    amountCollateral: Amount,   //Colleteral in case of cancel
+                    parkingspotRenter: Program,  //Car owner
+                    parkingspotOwner: Program,  //Selver
+                    endKey: PublicKey,        //Buyer public key for canceling
+                    cancelKey: PublicKey        //Buyer public key for canceling
+                    ) locks parkingSpot {
+                    
+  clause endReservation(sellerSig: Signature) requires payment: amountCollateral of assetRequested {
+	verify checkTxSig(cancelKey, sellerSig)
+    lock payment with parkingspotRenter    //return collateral
+  }
+  clause cancel(buyerSig: Signature) requires payment: amountCollateral of assetRequested {
+    verify checkTxSig(cancelKey, buyerSig) //check it is the buyer (owner of cancelKey)
+    lock payment with parkingspotOwner
+  }
+}
+Next time:
+Study programs and 1.1/1.0 version of documentation
+Test with java and create contracts and see if that is visible in transaction log
+
+https://github.com/square/okhttp/tree/master/mockwebserver

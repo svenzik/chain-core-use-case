@@ -1,0 +1,24 @@
+Attending:
+Sven Mitt
+Luciano Garcia Banuelos
+Fredrik Milani 
+
+Last time:
+Parkingspace is asset/token
+Two transactions - one to take, one to release and to pay
+Block the asset, guarantee that client arrives.
+
+
+Related work is other related work that simlar in usecases?
+Has these is done before, in what context.
+it must be opensource relate work.
+
+whitepaber on blockchain solutions.
+
+implementing a electronic management system??? 
+
+Search must show it is not replication of something else...
+releated work is material for the background!!! smart contract, deseinging smart ivy, IVY. Blockchain best practices.!!!!
+
+
+

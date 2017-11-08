@@ -1,0 +1,223 @@
+Attending:
+Sven Mitt
+Luciano Garcia Banuelos
+Fredrik Milani 
+
+Results:
+Ivy contract for simple parking.
+
+contract LoanCollateral(assetLoaned: Asset,
+                        amountLoaned: Amount,
+                        paymentDue: Time,
+                        parkingSpotLender: Program,
+                        parkingSpotUser: Program) locks collateral {
+  clause repay() requires payment: amountLoaned of assetLoaned {
+    lock payment with parkingSpotLender
+    lock collateral with parkingSpotUser
+  }
+  clause default() {
+    verify after(paymentDue)
+    lock payment with parkingSpotLender
+  }
+}
+
+//1 simple, buy time share
+Create asset for time 1.1.2017 from 14:42-15:33
+contract ParkingSpotRentalContract(
+					assetRequested: Asset,//EUR assets for the customer
+                    amountRequested: Amount, //paid amount in eurs for the parking 
+					compenesationForCancel: Amount
+					pricePerMinute: AMout/Integer
+					startOfParking: Time,
+					endOfParking: Time,
+                    seller: Program,
+                    sellerKey: PublicKey,
+                    buyer: Program,
+                    buyerKey: PublicKey) locks offered {//parkingspot asset
+  clause pay(minnutes: Integer,  payAmount: Interger) requires payment: amountRequested of assetRequested {
+	  verify before(startOfParking)
+    lock payment with seller
+	//verify minute*priceperminute == payAmount
+    lock offered with buyer
+  }
+
+  clause pay(minnutes: Integer,  payAmount: Interger) requires payment: amountRequested of assetRequested {
+	  verify before(startOfParking)
+    lock payment with seller
+	//verify minute*priceperminute == payAmount
+    lock offered with buyer
+  }
+
+  clause cancelBuyer(buyerSig: Signature)  requires payment: compenesationForCancel of assetRequested {
+	verify before(startOfParking)
+    verify checkTxSig(buyerKey, buyerSig)
+	lock payment with seller
+    lock offered with seller
+  }
+  
+  clause cancelSeller(sellerSig: Signature) {
+	  verify before(startOfParking)
+    verify checkTxSig(sellerKey, sellerSig)
+    lock offered with seller
+  }
+  clause releaseParkingspot(sellerSig: Signature) {
+	verify after(endOfParking)
+    verify checkTxSig(sellerKey, sellerSig)
+    lock offered with seller
+  }
+}
+//END
+
+contract ParkingSpotRentalContract(amountPayed: Amount,
+									startOfParking: Time,
+									endOfParking: Time, 
+									parkingSpotLender: Program,
+									parkingSpotUser: Program,
+						            parkingSpotUserKey: PublicKey) locks parkingSpotRented {
+  
+  clause startOfContract(buyerSig: Signature) requires payment: amountPayed of parkingSpotRented {
+	verify before(startOfParking)
+    verify checkTxSig(parkingSpotUserKey, buyerSig)
+    lock payment with parkingSpotLender
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause endOfContract() {
+    verify after(endOfParking)
+    lock parkingSpotRented with parkingSpotLender
+  }
+}
+
+contract ParkingSpotRentalContract(
+					assetRequested: Asset,
+                    amountRequested: Amount,
+					startOfParking: Time,
+                    seller: Program,
+                    buyer: Program,
+                    cancelKey: PublicKey) locks offered {
+  clause pay() requires payment: amountRequested of assetRequested {
+	verify before(startOfParking)
+    lock payment with seller
+    lock offered with buyer
+  }
+  clause cancel(sellerSig: Signature) {
+    verify checkTxSig(cancelKey, sellerSig)
+    lock offered with seller
+  }
+}
+
+
+//2 simple, pay at the end
+Create asset for time 1.1.2017 from 14:42-15:33
+contract ParkingSpotRentalContract(
+						parkingSpotRented: Asset,
+                        endOfParking: Time, 
+                        parkingSpotLender: Program,
+                        parkingSpotUser: Program,
+						parkingSpotUserKey: PublicKey) locks underlaying {
+  
+  clause startOfContract(buyerSig: Signature) requires payment: amountPayed of parkingSpotRented {
+	verify before(startOfParking)
+    verify checkTxSig(parkingSpotUserKey, buyerSig)
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause payForParking(buyerSig: Signature, amountPayed: Amount) {
+	verify after(startOfParking)
+    verify checkTxSig(parkingSpotUserKey, buyerSig)
+    lock amountPayed with parkingSpotLender
+    lock parkingSpotRented with parkingSpotLender
+  }
+  clause endOfContract() {
+    verify after(endOfParking)
+    lock underlaying with parkingSpotLender
+  }
+}
+
+contract ParkingSpotRentalContract(
+						parkingSpotRented: Asset,
+                        amountLoaned: Amount,//
+						chargePerMinute: Amount,
+                        startOfParking: Time,
+                        endOfParking: Time, //let say startOfParking+8h, for setting a limit. For long term, can be +1 year
+                        parkingSpotLender: Program,
+                        parkingSpotUser: Program) locks parkingSpotRented {
+						
+  clause startOfContract(buyerSig: Signature) requires payment: amountLoaned of parkingSpotRented {
+    lock payment with parkingSpotLender
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause extendParkingspotRental(additionlAmountLoaned: Amount, newEndOfParking: Time) requires payment: additionlAmountLoaned of parkingSpotRented {
+    lock additionlAmountLoaned with parkingSpotLender
+	endOfParking = newEndOfParking
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause endOfContract() {
+    verify after(endOfParking)
+    lock parkingSpotRented with parkingSpotLender
+  }
+  clause endOfContract() {
+    verify after(endOfParking)
+    lock parkingSpotRented with parkingSpotLender
+  }
+}
+
+
+// Full contract
+// parkingSpotRented: Asset 	- 1 parking spot, Selver has many parking plots (PL) and they have many parking spots (PS). Asset types Count = count(PS) * count(PL) 
+// clientPayment: Asset 		- clients assets type EUR
+// reservationDeposit: Amount 	- deposit in case one of the parties cancels before parking starts (of clientPayment aka EUR)
+// startOfParking: Time 		- time the parking is reserved/is starting
+// parkingRatePerMinute: Amount	- clientPayment per minute (cents would be good)
+contract ParkingSpotRentalContract(
+						parkingSpotRented: Asset,
+                        amountLoaned: Amount,//
+						chargePerMinute: Amount,
+                        startOfParking: Time,
+                        endOfParking: Time, //let say startOfParking+8h, for setting a limit. For long term, can be +1 year
+                        parkingSpotLender: Program,
+                        parkingSpotUser: Program) locks parkingSpotRented {
+						
+  clause reserve(buyerSig: Signature) requires payment: amountLoaned of parkingSpotRented {
+    lock payment with parkingSpotLender
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause cancelParking(buyerSig: Signature) requires payment: amountLoaned of parkingSpotRented {
+    lock payment with parkingSpotLender
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause startParking(buyerSig: Signature) requires payment: amountLoaned of parkingSpotRented {
+    lock payment with parkingSpotLender
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause extendParking(buyerSig: Signature) requires payment: amountLoaned of parkingSpotRented {
+    lock payment with parkingSpotLender
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause endParking(buyerSig: Signature) requires payment: amountLoaned of parkingSpotRented {
+    lock payment with parkingSpotLender
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause startOfContract(buyerSig: Signature) requires payment: amountLoaned of parkingSpotRented {
+    lock payment with parkingSpotLender
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause extendParkingspotRental(additionlAmountLoaned: Amount, newEndOfParking: Time) requires payment: additionlAmountLoaned of parkingSpotRented {
+    lock additionlAmountLoaned with parkingSpotLender
+	endOfParking = newEndOfParking
+    lock parkingSpotRented with parkingSpotUser
+  }
+  clause endOfContract() {
+    verify after(endOfParking)
+    lock parkingSpotRented with parkingSpotLender
+  }
+  clause endOfContract() {
+    verify after(endOfParking)
+    lock parkingSpotRented with parkingSpotLender
+  }
+}
+
+* There is no calculation possible in current IVY contracts
+* Date.now() is not possible
+
+
+Next time:
+Research adding collateral for reserving and canceling parking
